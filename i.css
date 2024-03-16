@@ -1,0 +1,131 @@
+body, html {
+  background: black;
+  color: #fff;
+  font-family: Arial;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /*text-align: center;
+  align-content:center;*/
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  user-select: none;
+  padding-bottom: 1in;
+  
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+input[type="range"]{
+  outline: none;
+  background: none;
+  border: none;
+
+  accent-color: white;
+}
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb
+{
+  -webkit-appearance: none;
+  background: red;
+  height: 6pt;
+  width: 6pt;
+}
+#freq{
+  background: #000;
+  border: solid 2px #fff;
+  outline:none;
+  color: #FFF;
+  font-size: 50pt;
+  width:5in;
+  height:auto;
+  border-radius: 9999px;
+  text-align: center;
+  display: inline;
+
+  font-family: 'Courier New', Courier, monospace;
+}
+.smallButton{
+  height: 60pt;
+  width: 60pt;
+  outline: none;
+  border: solid white 2px;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 35pt;
+}
+.smallButton:hover{
+  background: #222;
+}
+.smallButton:active{
+  background: #555;
+}
+#playpause{
+  width: 2in;
+  height: 2in;
+  background: white;
+  border-radius: 50%;
+  outline:none;
+  border: none;
+  display: block;
+}
+#playpause:hover{
+  background: #aaa;
+}
+#playpause:active{
+  background: #555;
+} 
+#playpause img{
+  width: 50%;
+  height: 50%;
+}
+
+
+#waves{
+  margin:0;
+  padding:0;
+  border:none;
+  outline: none;
+}
+
+#waves input{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#waves input + img{
+  cursor: pointer;
+}
+
+#waves > label:has(input:checked){
+  background: #555;
+}
+#waves label:hover{
+  background: #222;
+}
+#waves img{
+  width: 15pt;
+  height: 15pt;
+}
+
+#waves label{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25pt;
+  height: 25pt;
+  border: 1px solid #fff;
+  border-radius: 999px;
+}
