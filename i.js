@@ -40,7 +40,7 @@ function initOsc(){
   oscillator.frequency.value = freq.value;
   oscillator.connect(gain);
 }
-var stoppping = false;
+var stopping = false;
 function play(){
   if(stopping) return;
   playpause.children[0].src = "pause.svg"
