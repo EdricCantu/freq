@@ -40,18 +40,22 @@ function initOsc(){
   oscillator.frequency.value = freq.value;
   oscillator.connect(gain);
 }
+var stoppping = false;
 function play(){
+  if(stopping) return;
   playpause.children[0].src = "pause.svg"
-
   initOsc();
-
   oscillator.start();
 }
 function stop(){
   playpause.children[0].src = "play.svg"
-
-  oscillator.stop();
-  oscillator = undefined
+  gain.gain.exponentialRampToValueAtTime(1e-9, context.currentTime+0.1);
+  stopping = true;
+  setTimeout(()=>{
+    oscillator.stop();
+    oscillator = undefined;
+    stopping = false;
+  });
 }
 
 
