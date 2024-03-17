@@ -33,8 +33,8 @@ function initOsc(){
     context = new AudioContext();
     gain = context.createGain();
     gain.connect(context.destination);
-    gain.gain.value = volume.value;
   }
+  gain.gain.value = volume.value;//help with exponentialRampToValueAtTime
   oscillator = context.createOscillator();
   oscillator.type = waves.querySelector("input:checked").value;
   oscillator.frequency.value = freq.value;
