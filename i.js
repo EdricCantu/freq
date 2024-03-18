@@ -34,24 +34,31 @@ function initOsc(){
     gain = context.createGain();
     gain.connect(context.destination);
   }
-  gain.gain.value = volume.value;//help with setValueAtTime
+  gain.gain.value = 0;//nvm, starting wo popping
   oscillator = context.createOscillator();
   oscillator.type = waves.querySelector("input:checked").value;
   oscillator.frequency.value = freq.value;
   oscillator.connect(gain);
 }
-var stopping = false;
+var stopping = false, starting = false;
 function play(){
   if(stopping) return;
+  starting = true;
   playpause.children[0].src = "pause.svg"
   initOsc();
   oscillator.start(0);
+  gain.gain.setTargetAtTime(volume.value, context.currentTime, 0.01);
+
+  setTimeout(()=>{
+    starting = false;
+  },  100);
 }
 function stop(){
+  if(starting) return;
+  stopping = true;
   playpause.children[0].src = "play.svg"
   gain.gain.setTargetAtTime(0, context.currentTime, 0.01)
 
-  stopping = true;
   setTimeout(()=>{
     oscillator.stop();
     oscillator = undefined;
