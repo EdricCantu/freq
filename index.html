@@ -12,17 +12,6 @@
     <input id="pan" type="range" value="0" min="-1" max="1" step="0.001">
     <br>
     <br>
-    cents:
-    <div>
-      <button class="smallButton" id="octvDown">&radic;</button>
-      <button class="smallButton" id="semiDown">&divide;</button>
-      <button class="smallButton" id="centDown">&minus;</button>
-      <span style="font-size: 40pt">&cent;</span>
-      <button class="smallButton" id="centUp">&plus;</button>
-      <button class="smallButton" id="semiUp">&times;</button>
-      <button class="smallButton" id="octvUp">&Hat;</button>
-    </div>
-    <br>
     frequency:
     <div>
       <button class="smallButton" id="freqDown">&minus;</button>
@@ -49,12 +38,12 @@
         <img src="sqr.svg">
       </label>
     </fieldset>
-    <div>
-    <div style="display:inline-flex">
-      <button class="smallButton" id="octvDown">&radic;</button>
-      <button class="smallButton" id="semiDown">&divide;</button>
-      <button class="smallButton" id="centDown">&minus;</button>
-    </div>
+    <div style="display: inline-flex; flex-direction: row; align-items: center;">
+      <div style="display:inline-flex">
+        <button class="smallButton" id="octvDown">&radic;</button>
+        <button class="smallButton" id="semiDown">&divide;</button>
+        <button class="smallButton" id="centDown">&minus;</button>
+      </div>
       <button id="playpause" style="display:inline">
         <img src="play.svg">
       </button>
