@@ -55,7 +55,7 @@ function stop(){
     oscillator.stop();
     oscillator = undefined;
     stopping = false;
-  });
+  }, 0.2);
 }
 
 
