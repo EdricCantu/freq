@@ -49,14 +49,14 @@ function play(){
 }
 function stop(){
   playpause.children[0].src = "play.svg"
-  gain.gain.setTargetAtTime(0, context.currentTime, 0.1)
+  gain.gain.setTargetAtTime(0, context.currentTime, 0.01)
 
   stopping = true;
   setTimeout(()=>{
     oscillator.stop();
     oscillator = undefined;
     stopping = false;
-  }, 200);
+  },  100);
 }
 
 
