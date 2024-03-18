@@ -64,6 +64,9 @@ input[type="range"]::-moz-range-thumb
   border-radius: 999px;
   font-size: 35pt;
 }
+body > div > div > button.smallbutton{
+  margin: 0 5pt;
+}
 .smallButton:hover{
   background: #222;
 }
@@ -78,6 +81,7 @@ input[type="range"]::-moz-range-thumb
   outline:none;
   border: none;
   display: block;
+  margin: 0 10pt;
 }
 #playpause:hover{
   background: #aaa;
