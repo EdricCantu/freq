@@ -49,13 +49,13 @@ function play(){
 }
 function stop(){
   playpause.children[0].src = "play.svg"
-  gain.gain.exponentialRampToValueAtTime(1e-9, context.currentTime+0.25);
+  gain.gain.exponentialRampToValueAtTime(1e-9, context.currentTime+0.1);
   stopping = true;
   setTimeout(()=>{
     oscillator.stop();
     oscillator = undefined;
     stopping = false;
-  }, 0.5);
+  }, 200);
 }
 
 
