@@ -45,7 +45,7 @@ function play(){
   if(stopping) return;
   playpause.children[0].src = "pause.svg"
   initOsc();
-  oscillator.start();
+  oscillator.start(0);
 }
 function stop(){
   playpause.children[0].src = "play.svg"
