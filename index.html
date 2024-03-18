@@ -20,6 +20,21 @@
     </div>
     <input id="volume" type="range" value="1" min="0" max="1" step="0.001">
     <br>
+    <div style="display: inline-flex; flex-direction: row; align-items: center;">
+      <div style="display:inline-flex">
+        <button class="smallButton" id="octvDown">&radic;</button>
+        <button class="smallButton" id="semiDown">&divide;</button>
+        <button class="smallButton" id="centDown">&minus;</button>
+      </div>
+      <button id="playpause" style="display:inline">
+        <img src="play.svg">
+      </button>
+      <div style="display:inline-flex">
+        <button class="smallButton" id="centUp">&plus;</button>
+        <button class="smallButton" id="semiUp">&times;</button>
+        <button class="smallButton" id="octvUp">&Hat;</button>
+      </div>
+    </div>
     <fieldset id="waves">
       <label>
         <input type="radio" name="waves" value="sine" checked>
@@ -38,21 +53,6 @@
         <img src="sqr.svg">
       </label>
     </fieldset>
-    <div style="display: inline-flex; flex-direction: row; align-items: center;">
-      <div style="display:inline-flex">
-        <button class="smallButton" id="octvDown">&radic;</button>
-        <button class="smallButton" id="semiDown">&divide;</button>
-        <button class="smallButton" id="centDown">&minus;</button>
-      </div>
-      <button id="playpause" style="display:inline">
-        <img src="play.svg">
-      </button>
-      <div style="display:inline-flex">
-        <button class="smallButton" id="centUp">&plus;</button>
-        <button class="smallButton" id="semiUp">&times;</button>
-        <button class="smallButton" id="octvUp">&Hat;</button>
-      </div>
-    </div>
   </body>
 </html>
 <script src="i.js"></script>
