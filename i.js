@@ -265,7 +265,13 @@ volume.addEventListener("input", ()=>{
   
   volumeLabel.innerText = (Math.round(volume.value * 1000)/10) + "%";
   if(gain) gain.gain.value = volume.value;
-})
+});
+
+freqRange.addEventListener("input", ()=>{
+  changeFreq(
+    Math.round(modc(1,freqRange.value) * 1000) / 1000
+  );
+});
 
 
 for(var wave of waves.querySelectorAll("input")){
