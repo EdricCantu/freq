@@ -23,6 +23,7 @@ var f = 440;
 function changeFreq(frequency){
   f = frequency;
   freq.value = Math.round( f * 100 ) / 100;
+  freqRange.value = cdiff(1,f);
   if(oscillator){
     oscillator.frequency.value = f ;
   }
