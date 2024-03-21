@@ -1,0 +1,15 @@
+{
+  "name": "Frequency Generator",
+  "short_name": "Frequency",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Generator for frequencies",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "400x400",
+      "type": "image/svg+xml"
+    }
+  ]
+}
