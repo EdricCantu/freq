@@ -47,23 +47,23 @@ function play(){
   playpause.children[0].src = "pause.svg"
   initOsc();
   oscillator.start(0);
-  gain.gain.setTargetAtTime(volume.value, context.currentTime, 0.01);
+  gain.gain.setTargetAtTime(volume.value, context.currentTime, 0.001);
 
   setTimeout(()=>{
     starting = false;
-  },  100);
+  },  50);
 }
 function stop(){
   if(starting) return;
   stopping = true;
   playpause.children[0].src = "play.svg"
-  gain.gain.setTargetAtTime(0, context.currentTime, 0.01)
+  gain.gain.setTargetAtTime(0, context.currentTime, 0.001)
 
   setTimeout(()=>{
     oscillator.stop();
     oscillator = undefined;
     stopping = false;
-  },  100);
+  },  50);
 }
 
 
