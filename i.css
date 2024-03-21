@@ -148,18 +148,59 @@ body > div > div > button.smallbutton{
 
 
 
-
 /*https://www.quirksmode.org/blog/archives/2015/11/styling_and_scr.html*/
 input[type=range] {
   height: 37px;
   -webkit-appearance: none;
   margin: 10px 0;
-  width: calc( 120pt + 5in );
+  width: 100%;
 }
 input[type=range]:focus {
   outline: none;
 }
-
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #808080;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #808080;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #FFFFFF;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #808080;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #808080;
+  cursor: pointer;
+}
 input[type=range]::-ms-track {
   width: 100%;
   height: 15px;
@@ -169,39 +210,31 @@ input[type=range]::-ms-track {
   border-color: transparent;
   color: transparent;
 }
-input[type=range]::-webkit-slider-runnable-track,
-input[type=range]::-moz-range-track,
-input[type=range]:focus::-webkit-slider-runnable-track{
-  border: 1px solid #FFFFFF;
-  border-radius: 50px;
-  background: #000000 !important;
-  width: 100%;
-  height: 15px;
-  cursor: pointer;
-  animate: 0.2s;
+input[type=range]::-ms-fill-lower {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px #000000;
 }
-input[type=range]::-moz-range-thumb,
-input[type=range]::-webkit-slider-thumb,
-input[type=range]::-ms-thumb{
-  border: 1px solid #FFFFFF;
-  border-radius: 50px;
-  background: #000000;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-input[type=range]::-webkit-slider-thumb {
-  margin-top: -8.5px;
+input[type=range]::-ms-fill-upper {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px #000000;
 }
 input[type=range]::-ms-thumb {
   margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #808080;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #808080;
+  cursor: pointer;
 }
-input[type=range]::-ms-fill-lower,
-input[type=range]::-ms-fill-upper,
-input[type=range]:focus::-ms-fill-lower,
+input[type=range]:focus::-ms-fill-lower {
+  background: #FFFFFF;
+}
 input[type=range]:focus::-ms-fill-upper {
-  border: 1px solid #FFFFFF !important;
-  border-radius: 100px;
-  background: #000000;
+  background: #FFFFFF;
 }
