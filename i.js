@@ -1,10 +1,10 @@
 Math.blog = (b,y)=>(Math.log(y)/Math.log(b))
 modc = (f,c)=>(f/(2**(c/-1200)))
 cdiff = (f1,f2)=>(1200*Math.blog(2, f2/f1));
-var context, oscillator, gain;
+var context, oscillator, gain, panner;
 var x = 0;
 //                       o        s        c        f                 f      c      s      o
-var ids = "freq waves octvDown semiDown centDown freqDown playPause freqUp centUp semiUp octvUp volume volumeLabel".split(" ")
+var ids = "pan freq waves octvDown semiDown centDown freqDown playPause freqUp centUp semiUp octvUp volume volumeLabel".split(" ")
 for(const id of ids){
   window[id] = document.getElementById(id);
 }
@@ -33,7 +33,9 @@ function initOsc(){
   if(!(x++)){
     context = new AudioContext();
     gain = context.createGain();
-    gain.connect(context.destination);
+    panner = context.createStereoPanner();
+    panner.connect(context.destination);
+    gain.connect(panner);
   }
   gain.gain.value = 0;//nvm, starting wo popping
   oscillator = context.createOscillator();
@@ -266,6 +268,11 @@ volume.addEventListener("input", ()=>{
   
   volumeLabel.innerText = (Math.round(volume.value * 1000)/10) + "%";
   if(gain) gain.gain.value = volume.value;
+});
+
+pan.addEventListener("input", ()=>{
+  
+  if(panner) panner.pan.value = pan.value;
 });
 
 freqRange.addEventListener("input", ()=>{
