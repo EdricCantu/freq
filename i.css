@@ -35,7 +35,7 @@ input[type="range"]{
   background: none;
   border: none;
 
-  accent-color: white;
+  /*accent-color: white;*/
 }
 #freq{
   background: #000;
@@ -154,16 +154,14 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 10px 0;
   width: calc( 120pt + 5in );
-}
-input[type=range]:focus {
-  outline: none;
+  outline: none !important;
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 15px;
   cursor: pointer;
   animate: 0.2s;
-  background: #000000;
+  background: #000000 !important; /*prevent focus bg change*/
   box-shadow: #FFFFFF 0px 0px 1px 1.5px inset;
   border-radius: 50px;
   border: 1px solid #ffffff;

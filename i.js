@@ -268,6 +268,14 @@ volume.addEventListener("input", ()=>{
   
   volumeLabel.innerText = (Math.round(volume.value * 1000)/10) + "%";
   if(gain) gain.gain.value = volume.value;
+
+  //no
+  if(volume.value === 1){
+    volumeBoost.style.display = "none";
+  }else{
+    volumeBoostButton.style.display = "none";
+    volume
+  }
 });
 
 pan.addEventListener("input", ()=>{
