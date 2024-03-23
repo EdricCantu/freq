@@ -29,7 +29,11 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 20%;
+}
+@media (pointer:none), (pointer:coarse) {
+  body{
+    padding-top:50%;
+  }
 }
 input[type="range"]{
   outline: none;
