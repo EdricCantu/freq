@@ -1,4 +1,5 @@
-if(self instanceof Window){
+const cacheVersion = 'v1';
+if(self.constructor.name === "Window"){
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('sw.js')
@@ -9,10 +10,7 @@ if(self instanceof Window){
         console.log('Service Worker Registration Failed:', error);
       });
   });
-}else if(self instanceof ServiceWorkerGlobalScope){
-    
-  const cacheVersion = 'v1';
-  
+}else if(self.constructor.name === "ServiceWorkerGlobalScope"){
   self.addEventListener('activate', event => {
     console.log('Service Worker: Activated');
     // Remove old caches
