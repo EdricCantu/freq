@@ -300,8 +300,8 @@ for(var wave of waves.querySelectorAll("input")){
 
 
 
-normalizeNote = function(note){
-  var noteMap = {
+normalizeNote = function(letter){
+  return {
     "Cb":"BB",     ////
     "C":"CC",      ////
     "C#":"CD",     ////---------@@@@@@@@@@    C# -- C Sharp
@@ -323,26 +323,48 @@ normalizeNote = function(note){
     "Bb":"AB",     ////---------@@@@@@@@@@    Bb -- B Flat
     "B":"BB",      ////
     "B#":"CC"      ////
-  }
-  /*
-  var smap = {
-    "C":,    //-----------
-    "CD":,   //------@@@@@
-    "D":,    //-----------
-    "DE":,   //------@@@@@
-    "E":,    //-----------
-    "F":,    //-----------
-    "FG":,   //------@@@@@
-    "G":,    //-----------
-    "GA":,   //------@@@@@
-    "A":,    //-----------
-    "AB":,   //------@@@@@
-    "B":,    //-----------
-  }*/
+  }[letter];
+}
+function parseNote(note, normalize=true){
+  console.log(note);
+  var x = note.search(/\d/);
+  if(x<0) x = note.length//
+  letter = note.slice(0,x);
+  octave = note.slice(x) || "4";//
+  if(normalize) letter = normalizeNote(letter); 
+  return {letter,octave};
+}
+var smap = [
+  "CC",   //-----------
+  "CD",   //------@@@@@
+  "DD",   //-----------
+  "DE",   //------@@@@@
+  "EE",   //-----------
+  "FF",   //-----------
+  "FG",   //------@@@@@
+  "GG",   //-----------
+  "GA",   //------@@@@@
+  "AA",   //-----------
+  "AB",   //------@@@@@
+  "BB",   //-----------
+]; 
+function sdiff(note1, note2) {
+  // Parse notes into letter and octave components
+  const { letter: letter1, octave: octave1 } = parseNote(note1);
+  const { letter: letter2, octave: octave2 } = parseNote(note2);
+
+  // Calculate the semitone difference based on letter positions in the smap array
+  const semitone1 = smap.indexOf(letter1);
+  const semitone2 = smap.indexOf(letter2);
+
+  // Account for octave difference (12 semitones per octave)
+  const octaveDiff = (octave2 - octave1) * 12;
+
+  // Calculate semitone difference considering both letter position and octave
+  return semitone2 - semitone1 + octaveDiff;
 }
 
 function noteFreq(note, tune = "A4=440"){
-  tune = tine.split("=");
-  tuningnote = tune[0];
-  tuningfreq = tune[1];
+  var  [tuningnote,tuningfreq] = tune.split("=");
+  return modc(tuningfreq, 100*sdiff(tuningnote, note))
 }

@@ -47,14 +47,14 @@ input[type="range"]{
   border: solid 2px #fff;
   outline:none;
   color: #FFF;
-  font-size: 50pt;
-  width:5in;
+  font-size: 80pt;
+  width:6in;
   height:auto;
   border-radius: 9999px;
   text-align: center;
   display: inline;
 
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Oxanium, Roboto;
 }
 .smallButton{
   height: 60pt;
@@ -64,7 +64,7 @@ input[type="range"]{
   background: #000;
   color: #fff;
   border-radius: 999px;
-  font-size: 35pt;
+  font-size: 45pt;
 }
 body > div > div > button.smallbutton{
   margin: 0 5pt;
@@ -158,7 +158,7 @@ input[type=range] {
   height: 37px;
   -webkit-appearance: none;
   margin: 10px 0;
-  width: calc( 120pt + 5in );
+  width: calc( 120pt + 6in );
   outline: none !important;
 }
 input[type=range]::-webkit-slider-runnable-track {
@@ -235,3 +235,12 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #FFFFFF;
 }
+
+
+
+
+
+
+
+
+@media 
