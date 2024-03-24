@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
-  <rect width="100%" height="100%" fill="#000000"/>
-  <path fill="transparent" stroke="#fff" stroke-width="2" d="
-    M 6,15
-    C 6,15 10,-5 15,15
-    C 15,15 20,35 24,15
-  "/>
+  <!--<rect width="100%" height="100%" fill="#000000"/>-->
+  <circle cx="15" cy="15" r="13" stroke="#FFFFFF" stroke-width="1" fill="#000000"/>
+                                                   <!--2.0-->
+  <path fill="transparent" stroke="#fff" stroke-width="1.5" 
+    style="transform-origin: center; transform: scale(0.75);"
+    d="
+      M 6,15
+      C 6,15 10,-5 15,15
+      C 15,15 20,35 24,15
+    "
+  />
 </svg>
