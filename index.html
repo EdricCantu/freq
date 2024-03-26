@@ -3,7 +3,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="prefetch" href="pause.svg">
     <link rel="stylesheet" href="i.css">
@@ -20,7 +20,19 @@
     <input id="pan" type="range" value="0" min="-1" max="1" step="0.001">
     <br>
     <br>
-    frequency:
+    
+    <div>
+      <button class="smallButton">
+        <img src="note.svg"/>
+      </button>
+      <button class="smallButton">
+        <img src="sweep.svg"/>
+      </button>
+      <button class="smallButton">
+        <img src="volume.svg"/>
+      </button>
+    </div>
+    <br/>
     <div>
       <button class="smallButton" id="freqDown">&minus;</button>
       <input type="number" id="freq" value="440">
