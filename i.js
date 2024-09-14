@@ -345,7 +345,7 @@ function noteToMidi(note){
 
 function ntf(note, tune = "A4=440"){
   tune = tune.split("=");
-  tune = {note: noteToMidi(tune[0], pitch: parseInt(tune[1])};
+  tune = {note: noteToMidi(tune[0]), pitch: parseInt(tune[1])};
   note = noteToMidi(note);
   const interval = note - tune.note;
   return modc(tune.pitch, interval*100);
