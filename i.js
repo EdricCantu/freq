@@ -300,71 +300,53 @@ for(var wave of waves.querySelectorAll("input")){
 
 
 
-normalizeNote = function(letter){
-  return {
-    "Cb":"BB",     ////
-    "C":"CC",      ////
-    "C#":"CD",     ////---------@@@@@@@@@@    C# -- C Sharp
-    "Db":"CD",         ////-----@@@@@@@@@@    Db -- D Flat
-    "D":"DD",          ////
-    "D#":"DE",         ////-----@@@@@@@@@@    D# -- D Sharp
-    "Eb":"DE",     ////---------@@@@@@@@@@    Eb -- E Flat
-    "E":"EE",      ////
-    "E#":"F",      ////
-    "Fb":"E",          ////
-    "F":"FF",          ////
-    "F#":"FG",         ////-----@@@@@@@@@@    F# -- F Sharp
-    "Gb":"FG",     ////---------@@@@@@@@@@    Gb -- G Flat
-    "G":"GG",      ////
-    "G#":"GA",     ////---------@@@@@@@@@@    G# -- G Sharp
-    "Ab":"GA",         ////-----@@@@@@@@@@    Ab -- A Flat
-    "A":"AA",          ////
-    "A#":"AB",         ////-----@@@@@@@@@@    A# -- A Sharp
-    "Bb":"AB",     ////---------@@@@@@@@@@    Bb -- B Flat
-    "B":"BB",      ////
-    "B#":"CC"      ////
-  }[letter];
-}
-function parseNote(note, normalize=true){
-  console.log(note);
-  var x = note.search(/\d/);
-  if(x<0) x = note.length//
-  letter = note.slice(0,x);
-  octave = note.slice(x) || "4";//
-  if(normalize) letter = normalizeNote(letter); 
-  return {letter,octave};
-}
-var smap = [
-  "CC",   //-----------
-  "CD",   //------@@@@@
-  "DD",   //-----------
-  "DE",   //------@@@@@
-  "EE",   //-----------
-  "FF",   //-----------
-  "FG",   //------@@@@@
-  "GG",   //-----------
-  "GA",   //------@@@@@
-  "AA",   //-----------
-  "AB",   //------@@@@@
-  "BB",   //-----------
-]; 
-function sdiff(note1, note2) {
-  // Parse notes into letter and octave components
-  const { letter: letter1, octave: octave1 } = parseNote(note1);
-  const { letter: letter2, octave: octave2 } = parseNote(note2);
 
-  // Calculate the semitone difference based on letter positions in the smap array
-  const semitone1 = smap.indexOf(letter1);
-  const semitone2 = smap.indexOf(letter2);
 
-  // Account for octave difference (12 semitones per octave)
-  const octaveDiff = (octave2 - octave1) * 12;
 
-  // Calculate semitone difference considering both letter position and octave
-  return semitone2 - semitone1 + octaveDiff;
+
+
+
+
+
+function parseNote(note){
+  if(["#", "b", "♯", "♭"].includes(note[1])){
+    return {   letter: note.slice(0,2), octave: (parseInt(note.slice(2))||null)   };
+  }else{
+    return {   letter: note[0], octave: (parseInt(note.slice(1))||null)   };
+  } 
 }
 
-function noteFreq(note, tune = "A4=440"){
-  var  [tuningnote,tuningfreq] = tune.split("=");
-  return modc(tuningfreq, 100*sdiff(tuningnote, note))
+noteMap = [];
+octave = -2;
+notes = "CC CD DD DE EE FF FG GG GA AA AB BB".split(" ");
+while(octave++ < 9) noteMap.push(...(notes.map(letter=>(letter+octave))));
+notesSharp = "C C# D D# E F F# G G# A A# B".split(" ");
+notesFlat = "C Db D Eb E F Gb G Ab A Bb B".split(" ");
+function normalizeLetter(letter){;
+  switch(letter[1]){
+    case "#":
+    case "♯":
+      return notes[notesSharp.indexOf(letter)];
+      break;
+    case "b":
+    case "♭":
+      return notes[notesFlat.indexOf(letter)];
+      break;
+    default: //undefined
+      return letter.repeat(2);
+      break;
+  }
+}
+
+function noteToMidi(note){
+  const {letter, octave} = parseNote(note);
+  return noteMap.indexOf(normalizeLetter(letter)+octave);
+}
+
+function ntf(note, tune = "A4=440"){
+  tune = tune.split("=");
+  tune = {note: noteToMidi(tune[0], pitch: parseInt(tune[1])};
+  note = noteToMidi(note);
+  const interval = note - tune.note;
+  return modc(tune.pitch, interval*100);
 }
